@@ -94,10 +94,10 @@ samtools view -b -L ${f_panel} ${name}'_mapped.bam'  > ${name}'_mapped_onTarget.
 samtools sort ${name}'_mapped_onTarget.bam' ${name}'_psorted'
 samtools index ${name}'_psorted.bam'
 /shared/software/anaconda/bin/bamPEFragmentSize  --histogram ${name}'_fragmentSize.png' -T 'Fragment size' --maxFragmentLength 500 -b ${name}'_psorted.bam' --samplesLabel ${name} --outRawFragmentLengths ${name}'_fragment_length.tsv'
-alignmentSieve -b ${name}'_psorted.bam' --samFlagExclude 268 --ignoreDuplicates --maxFragmentLength 185 --minFragmentLength 65 -o ${name}'_psorted_filtered_'${size_range}'.bam' --filterMetrics metrics.txt
-alignmentSieve -b ${name}'_psorted.bam' --samFlagExclude 268 --maxFragmentLength 185 --minFragmentLength 65 -o ${name}'_psorted_filtered_'${size_range}'_with_dup.bam' --filterMetrics metrics.txt
+/shared/software/Miniconda/bin/alignmentSieve -b ${name}'_psorted.bam' --samFlagExclude 268 --ignoreDuplicates --maxFragmentLength 185 --minFragmentLength 65 -o ${name}'_psorted_filtered_'${size_range}'.bam' --filterMetrics metrics.txt
+/shared/software/Miniconda/bin/alignmentSieve -b ${name}'_psorted.bam' --samFlagExclude 268 --maxFragmentLength 185 --minFragmentLength 65 -o ${name}'_psorted_filtered_'${size_range}'_with_dup.bam' --filterMetrics metrics.txt
 ## for CHH calculation
-alignmentSieve -b ${name}'_psorted.bam' --samFlagExclude 268 --ignoreDuplicates -o ${name}'_psorted_filtered_CHH.bam' --filterMetrics metrics.txt
+/shared/software/Miniconda/bin/alignmentSieve -b ${name}'_psorted.bam' --samFlagExclude 268 --ignoreDuplicates -o ${name}'_psorted_filtered_CHH.bam' --filterMetrics metrics.txt
 
 f_out=${dir}/${name}/"/bsmap_out/"${name}"_meth_combined_length_"${size_range}".txt"
 f_bam=${dir}/${name}"/bsmap_out/"${name}'_psorted_filtered_'${size_range}'.bam'
