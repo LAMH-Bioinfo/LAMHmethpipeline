@@ -14,3 +14,6 @@ for i in $(cat sample_id.txt);do sbatch /shared/script_github/Liver_LAMH/HCC_NGS
 ## run summary script   
 sbatch /shared/script_github/Liver_LAMH/HCC_postNGS_process.sh [abs path of derectory]   
 既可以完成样本结果的统计
+
+
+test sample
